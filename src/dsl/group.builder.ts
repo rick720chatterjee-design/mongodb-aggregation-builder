@@ -3,23 +3,23 @@ import { AggregateOp } from '../ast/nodes';
 export class GroupBuilder {
   private aggregates: AggregateOp[] = [];
 
-  sum(field: string) {
+  sum(field: string): { as: (alias: string) => GroupBuilder } {
     return this._push({ op: 'sum', field });
   }
 
-  avg(field: string) {
+  avg(field: string): { as: (alias: string) => GroupBuilder } {
     return this._push({ op: 'avg', field });
   }
 
-  min(field: string) {
+  min(field: string): { as: (alias: string) => GroupBuilder } {
     return this._push({ op: 'min', field });
   }
 
-  max(field: string) {
+  max(field: string): { as: (alias: string) => GroupBuilder } {
     return this._push({ op: 'max', field });
   }
 
-  count() {
+  count(): { as: (alias: string) => GroupBuilder } {
     return this._push({ op: 'count' });
   }
 

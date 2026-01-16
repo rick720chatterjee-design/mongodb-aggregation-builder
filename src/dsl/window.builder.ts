@@ -18,7 +18,7 @@ export class WindowBuilder {
     return this;
   }
 
-  runningSum(field: string) {
+  runningSum(field: string): { as: (alias: string) => WindowBuilder } {
     return {
       as: (alias: string) => {
         this.outputs.push({
@@ -31,7 +31,7 @@ export class WindowBuilder {
     };
   }
 
-  rank() {
+  rank(): { as: (alias: string) => WindowBuilder } {
     return {
       as: (alias: string) => {
         this.outputs.push({
@@ -43,7 +43,7 @@ export class WindowBuilder {
     };
   }
 
-  denseRank() {
+  denseRank(): { as: (alias: string) => WindowBuilder } {
     return {
       as: (alias: string) => {
         this.outputs.push({
@@ -58,40 +58,40 @@ export class WindowBuilder {
   movingAvg(
     field: string,
     window: { rows?: number; days?: number }
-    ) {
+  ): { as: (alias: string) => WindowBuilder } {
     return {
-        as: (alias: string) => {
+      as: (alias: string) => {
         this.outputs.push({
-            op: 'movingAvg',
-            field,
-            window: window.rows
+          op: 'movingAvg',
+          field,
+          window: window.rows
             ? { type: 'rows', value: window.rows }
             : { type: 'days', value: window.days! },
-            as: alias,
+          as: alias,
         });
         return this;
-        },
+      },
     };
-    }
+  }
 
-    movingSum(
+  movingSum(
     field: string,
     window: { rows?: number; days?: number }
-    ) {
+  ): { as: (alias: string) => WindowBuilder } {
     return {
-        as: (alias: string) => {
+      as: (alias: string) => {
         this.outputs.push({
-            op: 'movingSum',
-            field,
-            window: window.rows
+          op: 'movingSum',
+          field,
+          window: window.rows
             ? { type: 'rows', value: window.rows }
             : { type: 'days', value: window.days! },
-            as: alias,
+          as: alias,
         });
         return this;
-        },
+      },
     };
-    }
+  }
 
   build() {
     if (!this.sort) {

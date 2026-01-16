@@ -1,0 +1,32 @@
+{
+  "name": "mongodb-aggregation-builder",
+  "version": "1.0.0",
+  "description": "Type-safe DSL for building MongoDB aggregation pipelines",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rick720chatterjee-design/mongodb-aggregation-builder.git"
+  },
+  "keywords": [
+    "mongodb",
+    "aggregation",
+    "dsl",
+    "nestjs",
+    "mongoose"
+  ],
+  "author": "Debjit Chatterjee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rick720chatterjee-design/mongodb-aggregation-builder/issues"
+  },
+  "homepage": "https://github.com/rick720chatterjee-design/mongodb-aggregation-builder#readme",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
